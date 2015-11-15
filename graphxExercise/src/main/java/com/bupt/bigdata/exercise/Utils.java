@@ -34,8 +34,10 @@ public class Utils {
             }
         }
         Iterator<Integer> iter = set.iterator();
+        int index = 0;
         while (iter.hasNext()){
-            vertexList.add(new Vertex(iter.next()));
+            vertexList.add(new Vertex(index,iter.next()));
+            index++;
         }
         return vertexList;
     }
@@ -51,8 +53,9 @@ public class Utils {
 
             while (line != null){
                 String[] array = line.split(regex);
-                Edge edge = new Edge(new Vertex(Integer.valueOf(array[0])),
-                        new Vertex(Integer.valueOf(array[1])),
+
+                Edge edge = new Edge(new Vertex(Integer.valueOf(array[0])-1,Integer.valueOf(array[0])),
+                        new Vertex(Integer.valueOf(array[1])-1,Integer.valueOf(array[1])),
                         Integer.valueOf(array[2]));
                 edgeList.add(edge);
                 line = reader.readLine();

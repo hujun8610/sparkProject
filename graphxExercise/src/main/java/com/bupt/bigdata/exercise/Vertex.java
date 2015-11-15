@@ -5,9 +5,11 @@ package com.bupt.bigdata.exercise;
  */
 public class Vertex {
 
+    private int vertexId;
     private int value;
 
-    public Vertex(int value){
+    public Vertex(int vertexId,int value){
+        this.vertexId = vertexId;
         this.value = value;
     }
 
@@ -24,5 +26,13 @@ public class Vertex {
         return "Vertex{" +
                 "value=" + value +
                 '}';
+    }
+
+    public int getVertexId() {
+        return vertexId;
+    }
+
+    public void setVertexId(int vertexId) {
+        this.vertexId = vertexId;
     }
 }
