@@ -66,7 +66,7 @@ object MllibMatrixtest {
     var blockHeight = 5
     var blockWidth = 5
 
-    if (args == 6) {
+    if (args.length == 6) {
       host = args(0)
       inputPath = args(1)
       inputPath2 = args(2)
