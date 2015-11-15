@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-graphx_2.10/srcs/spark-graphx_2.10-1.4.0-sources.jar!/org/apache/spark/graphx/Graph.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/graphxExercise/src/main/java/com/bupt/bigdata/exercise/SSSP.java" charset="UTF-8" />
+  </component>
+</project>
