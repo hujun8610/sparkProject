@@ -16,7 +16,6 @@ public class UtilsTest {
 
     @Test
     public void testGetVertexsFromFile(){
-        System.out.println(fileName);
         List<Vertex> list = Utils.getVertexsFromFile(fileName,regex);
         Assert.assertEquals(list.size(),6);
 

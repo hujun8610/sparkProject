@@ -15,12 +15,6 @@ public class Graph {
     public Graph(List<Vertex> vertexList,List<Edge> edgeList){
         this.vertexList = vertexList;
         this.graphMatrix = new int[vertexList.size()][vertexList.size()];
-
-       /* Map<Vertex,Integer> hashMap = new HashMap<>(this.vertexList.size());
-        for (int i = 0; i < vertexList.size(); i++) {
-            hashMap.put(vertexList.get(i),i);
-        }*/
-
         for (Edge edge:edgeList){
             this.graphMatrix[edge.getSrc().getVertexId()][edge.getDst().getVertexId()] = edge.getWeight();
         }
