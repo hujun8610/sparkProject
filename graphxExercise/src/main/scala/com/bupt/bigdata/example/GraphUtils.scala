@@ -5,7 +5,6 @@ import org.apache.spark.graphx.Edge
 import org.apache.spark.rdd.RDD
 
 import scala.reflect.ClassTag
-import scala.reflect.runtime.universe._
 
 /**
  * Created by hujun on 2016/1/24.

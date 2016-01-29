@@ -21,24 +21,31 @@ object PageRankWithGraphx {
 
     val graph = Graph.fromEdges[Double,Double](edgeRdd,alpha)
 
-    var rankGraph = graph.outerJoinVertices(graph.outDegrees){
+    val vertexNum= graph.vertices.count().toInt
+
+    var rankGraph : Graph[Double,Double]= graph.outerJoinVertices(graph.outDegrees){
       (vId,defaultValue,optDegree)=>{
-        1.0d/optDegree.getOrElse(1)
+        optDegree.getOrElse(0)
       }
-    }
+    }.mapTriplets(e=>1.0d/e.srcAttr,TripletFields.Src)
+     .mapVertices((id,attr)=>1.0d/vertexNum)
 
     var preGraph:Graph[Double,Double] = null
     var i = 0
     while (i<iter){
       rankGraph.cache()
+//      send message
       val updateRank = rankGraph.aggregateMessages[Double](ctx=>{
         ctx.sendToDst(ctx.srcAttr*ctx.attr)
       },_+_,TripletFields.Src)
 
       preGraph = rankGraph
+//      update vertext value
       rankGraph = rankGraph.outerJoinVertices(updateRank){
-        (vId,oldValue,optnewValue)=>{
-           optnewValue.getOrElse(0)
+        (vId,oldValue,optnewValue:Option[Double])=>{
+           val weight = optnewValue.getOrElse(0d)
+           val newValue = alpha *weight + (1-alpha)/vertexNum
+           newValue
         }
       }
 
@@ -49,10 +56,7 @@ object PageRankWithGraphx {
 
       i = i + 1
     }
-
     sc.stop()
-
   }
-
 
 }

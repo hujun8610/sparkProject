@@ -1,6 +1,6 @@
 import sbt.Keys._
 
-val sparkVersion="1.4.0"
+val sparkVersion="1.6.0"
 
 lazy val sparkDependencies=Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "compile",
@@ -9,9 +9,10 @@ lazy val sparkDependencies=Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion % "compile",
   "org.apache.spark" %% "spark-hive" % sparkVersion % "compile",
   "org.apache.spark" %% "spark-catalyst" % sparkVersion % "compile",
-  "org.apache.hadoop" % "hadoop-client" % "2.4.0" % "compile",
+  "org.apache.hadoop" % "hadoop-client" % "2.6.0" % "compile",
   "org.scalatest" % "scalatest_2.10" % "2.1.3" % "compile",
-  "org.apache.lucene" % "lucene-analyzers" % "3.4.0"
+  "org.apache.lucene" % "lucene-analyzers" % "3.4.0" % "compile",
+  "junit" % "junit" % "4.9" % "compile"
 )
 
 lazy val commonSettings=Seq(

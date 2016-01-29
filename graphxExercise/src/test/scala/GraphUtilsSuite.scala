@@ -22,7 +22,6 @@ class GraphUtilsSuite extends FunSuite with BeforeAndAfterAll{
     val inputPath = "data/graphx/pageRank.txt"
     val edgeRdd = GraphUtils.getEdgesFromFile[Double](sc,inputPath)
 
-//    println("123".asInstanceOf[Double])
     println(edgeRdd.collect().apply(0).attr)
     assert(edgeRdd.count()==9L)
   }
