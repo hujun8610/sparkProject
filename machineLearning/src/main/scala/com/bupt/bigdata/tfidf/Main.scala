@@ -5,6 +5,7 @@ package com.bupt.bigdata.tfidf
  */
 object Main {
   def main(args: Array[String]) {
+
     println("begin")
   }
 }
