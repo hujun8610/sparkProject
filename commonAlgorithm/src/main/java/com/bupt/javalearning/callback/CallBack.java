@@ -5,7 +5,7 @@ package com.bupt.javalearning.callback;
  */
 
 /**
- * 通过接口来定义回调的协议
+ * 閫氳繃鎺ュ彛鏉ュ畾涔夊洖璋冪殑鍗忚
  * */
 public interface CallBack {
     void process(String msg);

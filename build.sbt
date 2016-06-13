@@ -21,11 +21,12 @@ lazy val commonSettings=Seq(
    scalaVersion :="2.10.4"
 )
 
-lazy val root=(project in file(".")).aggregate(dataFrameExercise,graphxExercise,machineLearning).settings(aggregate in update :=false)
+lazy val root=(project in file(".")).aggregate(dataFrameExercise,graphxExercise,machineLearning,commonAlgorithm).settings(aggregate in update :=false)
 
 lazy val dataFrameExercise = (project in file("dataFrameExercise")).settings(commonSettings: _*).settings(
   name := "dataFrameExercise",
-  libraryDependencies ++=sparkDependencies
+  libraryDependencies ++=sparkDependencies,
+  javacOptions ++= Seq("-encoding", "UTF-8")
 )
 
 lazy val graphxExercise = (project in file("graphxExercise")).settings(commonSettings: _*).settings(
@@ -35,6 +36,13 @@ lazy val graphxExercise = (project in file("graphxExercise")).settings(commonSet
 
 lazy val machineLearning = (project in file("machineLearning")).settings(commonSettings: _*).settings(
   name := "machineLearning",
+  libraryDependencies ++= sparkDependencies,
+  javacOptions ++= Seq("-encoding", "UTF-8")
+)
+
+lazy val commonAlgorithm = (project in file("commonAlgorithm")).settings(commonSettings: _*).settings(
+  name := "commonAlgorithm",
   libraryDependencies ++= sparkDependencies
 )
+
 
