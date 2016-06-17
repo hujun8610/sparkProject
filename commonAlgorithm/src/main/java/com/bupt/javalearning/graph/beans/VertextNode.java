@@ -1,7 +1,7 @@
 package com.bupt.javalearning.graph.beans;
 
 /**
- * ÁÚ½Ó±íĞÎÊ½Í¼µÄ¶¨Òå ¶¥µã
+ * é‚»æ¥è¡¨å½¢å¼å›¾çš„å®šä¹‰ é¡¶ç‚¹
  * */
 
 public class VertextNode{

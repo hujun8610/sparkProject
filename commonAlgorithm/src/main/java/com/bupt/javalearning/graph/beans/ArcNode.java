@@ -4,7 +4,7 @@ package com.bupt.javalearning.graph.beans;
  * Created by hujun on 2016/6/10.
  */
 /**
- * ÁÚ½Ó±íĞÎÊ½µÄÍ¼µÄ¶¨Òå-Í·½áµã
+ * é‚»æ¥è¡¨å½¢å¼çš„å›¾çš„å®šä¹‰-å¤´ç»“ç‚¹
  * */
 public class ArcNode {
 
