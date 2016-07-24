@@ -10,25 +10,25 @@ import java.util.List;
 public class FileUtils {
 
     /**
-     *  从文件中读取数据，若文件名为空或文件不存在、文件长度为0则直接返回一个长度为0的list
-     *  文件格式如下：src,des,value
-     *  分别表示起点、终点和弧长
-     *  eg: 1,2,5
-     *      2,3,6
-     *      4,5,8
-     * */
-    public static List<String> read(String fileName){
+     * 浠庢枃浠朵腑璇诲彇鏁版嵁锛岃嫢鏂囦欢鍚嶄负绌烘垨鏂囦欢涓嶅瓨鍦ㄣ�佹枃浠堕暱搴︿负0鍒欑洿鎺ヨ繑鍥炰竴涓暱搴︿负0鐨刲ist
+     * 鏂囦欢鏍煎紡濡備笅锛歴rc,des,value
+     * 鍒嗗埆琛ㄧず璧风偣銆佺粓鐐瑰拰寮ч暱
+     * eg: 1,2,5
+     * 2,3,6
+     * 4,5,8
+     */
+    public static List<String> read(String fileName) {
         List<String> list = new ArrayList<String>();
 
-        if(fileName == null) return list;
+        if (fileName == null) return list;
         File file = new File(fileName);
-        if(!file.exists()) return list;
+        if (!file.exists()) return list;
         BufferedReader bufReader = null;
 
         try {
             bufReader = new BufferedReader(new FileReader(file));
             String tmp = bufReader.readLine();
-            while (tmp!=null){
+            while (tmp != null) {
                 list.add(tmp);
                 tmp = bufReader.readLine();
             }
@@ -45,7 +45,6 @@ public class FileUtils {
         }
         return list;
     }
-
 
 
 }
