@@ -15,7 +15,7 @@ object GraphUtils {
     val tClass = scala.reflect.classTag[T]
     val manifest =  scala.reflect.Manifest
 
-    val edgeRdd = sc.textFile(filePath).map(line=>{-
+    val edgeRdd = sc.textFile(filePath).map(line=>{
       val array = line.split(",")
       val srcId = array(0).toLong
       val desId = array(1).toLong

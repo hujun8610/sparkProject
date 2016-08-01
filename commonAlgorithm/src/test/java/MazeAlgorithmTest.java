@@ -1,3 +1,4 @@
+import com.bupt.javalearning.algorithm.maze.MazeAlgorithm;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class MazeAlgorithmTest {
             {1,1,1,1,0}
         };
 
-        Stack<Point> stack = mazeAlgorithm.searchMazeBFS(maze);
+        Stack<MazeAlgorithm.Point> stack = mazeAlgorithm.searchMazeBFS(maze);
         Assert.assertEquals(8,stack.size());
 
     }
