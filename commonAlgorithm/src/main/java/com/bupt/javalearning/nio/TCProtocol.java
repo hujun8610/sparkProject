@@ -1,6 +1,8 @@
 package com.bupt.javalearning.nio;
 
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -13,6 +15,9 @@ import java.nio.channels.SocketChannel;
 public class TCProtocol implements Protocol{
     private static int ALLOCATE_SIZE = 1024;
 
+    private static final Logger logger = Logger.getLogger(TCProtocol.class);
+
+
     @Override
     public void handleRead(SelectionKey key) {
         ByteBuffer bf = ByteBuffer.allocate(ALLOCATE_SIZE);
@@ -23,9 +28,8 @@ public class TCProtocol implements Protocol{
                 if(readBytes>0){
                     //Todo read data from bf
                     String data = new String(bf.array(),0,readBytes);
-                    System.out.println(data);
+                    logger.info(data);
                     bf.clear();
-                }else{
                     break;
                 }
             }
@@ -36,6 +40,18 @@ public class TCProtocol implements Protocol{
 
     @Override
     public void handleWrite(SelectionKey key) {
+        ByteBuffer bf = (ByteBuffer) key.attachment();
+        bf.flip();
+        SocketChannel  socketChannel = (SocketChannel) key.channel();
+        try {
+            socketChannel.write(bf);
+            while (bf.hasRemaining()){
+                key.interestOps(SelectionKey.OP_READ);
+            }
+            bf.compact();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
