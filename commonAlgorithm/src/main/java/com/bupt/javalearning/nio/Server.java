@@ -77,6 +77,7 @@ public class Server {
         String ip = "localhost";
         int port = 65432;
 
+        System.out.println("Server begin to listen");
         Server server = new Server(ip,port);
         Selector selector = server.register();
         server.listen(selector);

@@ -3,7 +3,9 @@ package com.bupt.javalearning.nio;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
@@ -36,6 +38,7 @@ public class Client {
         ByteBuffer bf = ByteBuffer.allocate(ALLOCATE_SIZE);
         try {
             socketChannel.write(ByteBuffer.wrap(data.getBytes()));
+            int iterCount = 0;
             while (true){
                 bf.clear();
                 int readBytes = socketChannel.read(bf);
@@ -44,19 +47,34 @@ public class Client {
                     logger.info("Client data is " + new String(bf.array(),0,readBytes));
                     break;
                 }
+                logger.info("the iterCount is "+iterCount);
+                iterCount++;
+                Thread.sleep(1000);
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e1){
+            e1.printStackTrace();
         }
 
+    }
+
+    public void clientRegister(){
+        logger.info("client register to server");
+        Message msg = Message.REGISTER;
+        this.sendData(msg.getName());
     }
 
     public static void main(String[] args) {
         String host = "localhost";
         int port = 65432;
+        System.out.println("Client begin to send");
         Client client = new Client(host,port);
         String requestData = "First send data";
+
         client.sendData(requestData);
+
+        client.clientRegister();
 
     }
 
