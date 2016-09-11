@@ -1,6 +1,8 @@
 package com.bupt.javalearning.nio;
 
 
+
+import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
@@ -14,6 +16,7 @@ import java.util.Set;
  */
 public class Server {
 
+    private static final Logger logger = Logger.getLogger(Server.class);
     private String ip;
     private int port;
 
@@ -71,11 +74,15 @@ public class Server {
 
 
     public static void main(String[] args) {
-        String ip = "192.168.199.238";
+        String ip = "localhost";
         int port = 65432;
 
+        System.out.println("Server begin to listen");
+        Server server = new Server(ip,port);
+        Selector selector = server.register();
+        server.listen(selector);
 
-
+        //Todo how to shut down ServerSocketChannel
 
     }
 
