@@ -1,4 +1,4 @@
-package com.bupt.javalearning.mutithread.netwok;
+package com.bupt.javalearning.mutithread.crawer;
 
 /**
  * Created by hujun on 2016/6/3.
