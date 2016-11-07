@@ -5,7 +5,7 @@ package com.bupt.javalearning.graph;
  */
 public class SSSP {
     public static void main(String[] args) {
-
+        System.out.println("Stop sssp");
     }
 
 }
