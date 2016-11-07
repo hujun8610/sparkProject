@@ -39,7 +39,7 @@ public class MultiplexerTimeServer implements Runnable{
     public void run() {
         while (!stop){
             try {
-                //超时时间为1s
+                //???????1s
                 selector.select(1000);
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> it = selectionKeys.iterator();
